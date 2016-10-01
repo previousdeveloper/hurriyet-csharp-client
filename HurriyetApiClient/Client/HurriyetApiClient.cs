@@ -10,9 +10,8 @@ namespace HurriyetApiClient
     public class HurriyetApiApiClient : IHurriyetApiClient
     {
         private readonly IHttwrapClient _httwrapClient;
-        private readonly IArticleResource _article;
-        private readonly IWriterResource _writer;
         private readonly IHurriyetApiConfiguration _apiConfiguration;
+        private readonly IApiResourceFactory _apiResourceFactory;
 
         public HurriyetApiApiClient(IHurriyetApiConfiguration apiConfiguration)
         {
@@ -21,21 +20,20 @@ namespace HurriyetApiClient
             IHttwrapConfiguration configuration = new HttwrapConfiguration(string.IsNullOrEmpty(_apiConfiguration.BaseUrl) ? Constants.BaseUrl : _apiConfiguration.BaseUrl);
             _httwrapClient = new HttwrapClient(configuration);
 
-            _article = new ArticleResource(_httwrapClient);
-            _writer = new WriterResource(_httwrapClient);
+            _apiResourceFactory = new ApiResourceFactory(_httwrapClient);
 
             _httwrapClient.AddInterceptor(new ApiInterceptor(_apiConfiguration.ApiKey));
         }
         public async Task<List<ArticleResponse>> GetArticles()
         {
-            List<ArticleResponse> result = await _article.GetArticles();
+            List<ArticleResponse> result = await _apiResourceFactory.ArticleResource.GetArticles();
 
             return result;
         }
 
         public async Task<List<WriterResponse>> GetWriters()
         {
-            List<WriterResponse> result = await _writer.GetWriters();
+            List<WriterResponse> result = await _apiResourceFactory.WriterResource.GetWriters();
 
             return result;
         }

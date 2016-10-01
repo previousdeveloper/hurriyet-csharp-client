@@ -79,6 +79,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="HurriyetApiClient.cs" />
     <Compile Include="HurriyetApiConfiguration.cs" />
+    <Compile Include="IApiResourceFactory.cs" />
     <Compile Include="IHurriyetApiClient.cs" />
     <Compile Include="IHurriyetApiConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
