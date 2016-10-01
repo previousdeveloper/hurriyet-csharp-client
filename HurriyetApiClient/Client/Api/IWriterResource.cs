@@ -2,12 +2,10 @@
 using System.Threading.Tasks;
 using HurriyetApiClient.Contract.Response;
 
-namespace HurriyetApiClient
+namespace HurriyetApiClient.Api
 {
-    public interface IHurriyetApiClient
+    public interface IWriterResource
     {
-        Task<List<ArticleResponse>> GetArticles();
-
         Task<List<WriterResponse>> GetWriters();
     }
 }

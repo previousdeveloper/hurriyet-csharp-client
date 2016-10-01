@@ -94,8 +94,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticleTests.cs" />
+    <Compile Include="ArticleResourceTests.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WriteResourceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -104,6 +106,10 @@
     <ProjectReference Include="..\Client\HurriyetApiClient.csproj">
       <Project>{4243ee2b-61a5-4ad0-95c9-afe48a59a0a9}</Project>
       <Name>HurriyetApiClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Contract\HurriyetApiClient.Contract.csproj">
+      <Project>{5C73FCCE-C873-466F-9599-67B89116199A}</Project>
+      <Name>HurriyetApiClient.Contract</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

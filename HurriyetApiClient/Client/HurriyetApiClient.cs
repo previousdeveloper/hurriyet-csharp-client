@@ -3,14 +3,15 @@ using System.Threading.Tasks;
 using Httwrap;
 using Httwrap.Interface;
 using HurriyetApiClient.Api;
-using HurriyetApiClient.Response;
+using HurriyetApiClient.Contract.Response;
 
 namespace HurriyetApiClient
 {
     public class HurriyetApiApiClient : IHurriyetApiClient
     {
         private readonly IHttwrapClient _httwrapClient;
-        private readonly IArticle _article;
+        private readonly IArticleResource _article;
+        private readonly IWriterResource _writer;
         private readonly IHurriyetApiConfiguration _apiConfiguration;
 
         public HurriyetApiApiClient(IHurriyetApiConfiguration apiConfiguration)
@@ -19,7 +20,9 @@ namespace HurriyetApiClient
 
             IHttwrapConfiguration configuration = new HttwrapConfiguration(string.IsNullOrEmpty(_apiConfiguration.BaseUrl) ? Constants.BaseUrl : _apiConfiguration.BaseUrl);
             _httwrapClient = new HttwrapClient(configuration);
-            _article = new Article(_httwrapClient);
+
+            _article = new ArticleResource(_httwrapClient);
+            _writer = new WriterResource(_httwrapClient);
 
             _httwrapClient.AddInterceptor(new ApiInterceptor(_apiConfiguration.ApiKey));
         }
@@ -30,5 +33,11 @@ namespace HurriyetApiClient
             return result;
         }
 
+        public async Task<List<WriterResponse>> GetWriters()
+        {
+            List<WriterResponse> result = await _writer.GetWriters();
+
+            return result;
+        }
     }
 }

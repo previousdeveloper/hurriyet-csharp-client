@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HurriyetApiClient.Response
+namespace HurriyetApiClient.Contract.Response
 {
     public class ArticleResponse
     {

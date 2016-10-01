@@ -2,15 +2,15 @@
 using System.Threading.Tasks;
 using Httwrap;
 using Httwrap.Interface;
-using HurriyetApiClient.Response;
+using HurriyetApiClient.Contract.Response;
 
 namespace HurriyetApiClient.Api
 {
-    public class Article : IArticle
+    public class ArticleResource : IArticleResource
     {
         private readonly IHttwrapClient _httwrapClient;
 
-        public Article(IHttwrapClient httwrapClient)
+        public ArticleResource(IHttwrapClient httwrapClient)
         {
             _httwrapClient = httwrapClient;
         }
