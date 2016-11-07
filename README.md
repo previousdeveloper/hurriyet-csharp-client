@@ -1,6 +1,14 @@
 # Client
 HurriyetApi wrapper for C# - http://developers.hurriyet.com.tr
 
+## Install
+
+```bash
+  
+PM> Install-Package HurriyetApiClient
+
+```
+
 ## How to use  
 
 **Init**  
